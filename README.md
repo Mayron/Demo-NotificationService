@@ -27,7 +27,7 @@ There are 2 ways to make the above test pass, but neither is ideal:
 + public class AuditLogNotificationHandler : INotificationHandler<AuditLogNotification>
 ```
 
-The problem with this is that the `AuditLogNotificationHandler` class currently works. Removing this means that it no longer handles subclasses of `AuditLogNotification` and the other test included in this repository then fails.
+The problem with this is that the `AuditLogNotificationHandler` class currently works. Removing this means that it no longer handles subclass types of `AuditLogNotification` and the other test included in this repository then fails.
 
 ```csharp
 // ERROR: Does not hit the handler!
@@ -38,11 +38,11 @@ await _mediator.Publish(new AccountAuditLogNotification("User Joined Account", a
 await _mediator.Publish(new AuditLogNotification("User Created", true));
 ```
 
-You could argue splitting the `AuditLogNotificationHandler` handler into 3 handlers to handle each `AuditLogNotification` subtype but this does not scale well.
-The use of the `AuditLogNotificationHandler` handler in this repository is simple and a real working example may have a lot of shared logic that can mostly act on the base `AuditLogNotification` type.
-If a new audit log notification subtype was implemented, it should be able to work with the existing logic; Requiring a new handler for each type would be bad practice.
+You could argue splitting the `AuditLogNotificationHandler` handler into 3 handlers to handle each `AuditLogNotification` subtype will solve this but this does not scale well.
+The use of the `AuditLogNotificationHandler` handler in this repository is simple and a more complex real-world example may require a lot of shared logic that can mostly act on the base `AuditLogNotification` type.
+If a new audit log notification subtype was added, it should be able to work with the existing logic and require minimal changes; Requiring a new handler for each type would be bad practice.
 
-Finally, being able to use generic type arguments for notification handlers is a good feature that works and we should not be discouraged from using it.
+More importantly, being able to use generic type arguments for notification handlers is a good feature that works and we should not be discouraged from using it.
 
 2️⃣ Set `ValidateOnBuild` to false.
 
