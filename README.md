@@ -64,4 +64,7 @@ The process then seems to create 2 service descriptors, one for the service and 
 I think this validation process, or how MediatR is registering the services, may be ignoring or not correctly catering to the generic type constraint on the `AuditLogNotificationHandler<T> : INotificationHandler<T> where T : AuditLogNotification` class declaration,
 resulting in any service that implements INotificationHandler<> being registered twice as an array and as a standalone service. 
 
-Then, MediatR appears to be calling `GetInstances` to get the registered instances of handlers that can handle the `NewUserNotification` and incorrectly receiving 2 handlers where both handlers are instances of `NewUserNotificationHandler`
+Then, MediatR appears to be calling `GetInstances` to get the registered instances of handlers that can handle the `NewUserNotification` and incorrectly receiving 2 handlers where both handlers are instances of `NewUserNotificationHandler`:
+
+![image](https://github.com/Mayron/Demo-NotificationService/assets/5854995/799f7312-6ed8-46a3-9865-8992e3959f5e)
+![image](https://github.com/Mayron/Demo-NotificationService/assets/5854995/2185b894-169f-42f1-b380-39aa7b7b69a8)
