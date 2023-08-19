@@ -13,7 +13,9 @@ The action for this endpoint publishes 4 MediatR notifications:
 However, because the `AuditLogNotificationHandler<T> where T: AuditLogNotification` accepts a generic type argument, this causes the `NewUserNotificationHandler` to be executed twice.
 The `NewUserNotificationHandler` type has no generic type arguments assigned to it and should not be influenced by the `AuditLogNotificationHandler` in any way.
 
-This only occurs when the `ValidateOnBuild` service provider option is set to `true`:
+**NOTE:** This only occurs when the `ValidateOnBuild` service provider option is set to `true`:
+Please refer to the [Theories for why this bug is happening](#theories-for-why-this-bug-is-happening) section for a detailed explanation of how this option is interfering with MediatR.
+
 ![image](https://github.com/Mayron/Demo-NotificationService/assets/5854995/e2c1f344-30c7-4d04-93aa-5e8828fd8b38)
 
 # Important
