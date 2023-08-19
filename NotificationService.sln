@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34003.232
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotificationService.Api", "NotificationService.Api\NotificationService.Api.csproj", "{59D04C0B-5C04-4B0B-AD28-BC603D67F1C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationService.IntegrationTests", "NotificationService.IntegrationTests\NotificationService.IntegrationTests.csproj", "{01E9BFA5-3166-4381-9180-65268F53A125}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59D04C0B-5C04-4B0B-AD28-BC603D67F1C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59D04C0B-5C04-4B0B-AD28-BC603D67F1C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59D04C0B-5C04-4B0B-AD28-BC603D67F1C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59D04C0B-5C04-4B0B-AD28-BC603D67F1C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01E9BFA5-3166-4381-9180-65268F53A125}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01E9BFA5-3166-4381-9180-65268F53A125}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01E9BFA5-3166-4381-9180-65268F53A125}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01E9BFA5-3166-4381-9180-65268F53A125}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9169E94E-4129-40E7-A666-1BFDB0F046DE}
+	EndGlobalSection
+EndGlobal
