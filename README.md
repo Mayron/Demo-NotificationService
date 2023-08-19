@@ -8,7 +8,7 @@ Link to the submitted issue on the MediatR repository: https://github.com/jbogar
 
 # Bug Description
 The following test demonstrates the failure caused by the bug:
-https://github.com/Mayron/Demo-NotificationService/blob/master/NotificationService.IntegrationTests/UsersApiIntegrationTests.cs#L43
+https://github.com/Mayron/Demo-NotificationService/blob/master/NotificationService.IntegrationTests/UsersApiIntegrationTests.cs#L17
 
 ![image](https://github.com/Mayron/Demo-NotificationService/assets/5854995/a14b59b0-9d09-4ab1-a8a8-5a412c784d05)
 
@@ -17,6 +17,9 @@ https://github.com/Mayron/Demo-NotificationService/blob/master/NotificationServi
 
 The action for this endpoint publishes 4 MediatR notifications:
 ![image](https://github.com/Mayron/Demo-NotificationService/assets/5854995/d04da39e-147c-4d0b-949d-6c68ba535977)
+
+A `NewUserNotification` is published only once but triggers the same `NewUserNotificationHandler` twice, resulting in 2 User objects being added to a dummy User repository class.
+If the functionality worked as expected, there should only be 1 new User object created and added to this repository.
 
 However, because the `AuditLogNotificationHandler<T> where T: AuditLogNotification` accepts a generic type argument, this causes the `NewUserNotificationHandler` to be executed twice.
 The `NewUserNotificationHandler` type has no generic type arguments assigned to it and should not be influenced by the `AuditLogNotificationHandler` in any way.
