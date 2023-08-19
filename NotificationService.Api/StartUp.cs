@@ -1,8 +1,6 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using NotificationService.Api.Data;
-using System.Reflection;
 
 namespace NotificationService.Api
 {
@@ -12,8 +10,7 @@ namespace NotificationService.Api
         {
             services.AddControllers();
 
-            Assembly thisAssembly = typeof(StartUp).Assembly;
-            services.AddMediatR(thisAssembly);
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<StartUp>());
 
             services.AddSingleton<IUserRepository, UserRepository>();
             services.AddSingleton<IAuditLogRepository, AuditLogRepository>();
