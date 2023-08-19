@@ -17,7 +17,7 @@ The `NewUserNotificationHandler` type has no generic type arguments assigned to 
 
 ![image](https://github.com/Mayron/Demo-NotificationService/assets/5854995/e2c1f344-30c7-4d04-93aa-5e8828fd8b38)
 
-# Important
+# Temporary Fixes and Why its Still a Problem
 There are 2 ways to make the above test pass, but neither is ideal:
 
 1️⃣ Remove the generic type argument from the `AuditLogNotificationHandler`.
