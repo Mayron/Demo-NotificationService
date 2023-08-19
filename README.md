@@ -1,5 +1,11 @@
-# Description
-This repository demonstrates a bug with the MediatR NuGet package. The following test demonstrates the failure caused by the bug:
+# About
+This repository demonstrates a bug with the MediatR NuGet package when using notification handlers with generic type arguments and the IoC service provider's `ValidateOnBuild` config option set to true.
+The bug may not directly be a MediatR bug, but it does mean that MediatR is incompatible with the IoC service provider's validation build step.
+
+When adding MediatR to ASP.Net Core's default IoC container, it might be possible to tweak how INotificationHandlers are registered to fix this issue.
+
+# Bug Description
+The following test demonstrates the failure caused by the bug:
 https://github.com/Mayron/Demo-NotificationService/blob/master/NotificationService.IntegrationTests/UsersApiIntegrationTests.cs#L43
 
 ![image](https://github.com/Mayron/Demo-NotificationService/assets/5854995/a14b59b0-9d09-4ab1-a8a8-5a412c784d05)
@@ -17,7 +23,7 @@ The `NewUserNotificationHandler` type has no generic type arguments assigned to 
 
 ![image](https://github.com/Mayron/Demo-NotificationService/assets/5854995/e2c1f344-30c7-4d04-93aa-5e8828fd8b38)
 
-# Temporary Fixes and Why its Still a Problem
+# Temporary Fixes and Why it is Still a Problem
 There are 2 ways to make the above test pass, but neither is ideal:
 
 1️⃣ Remove the generic type argument from the `AuditLogNotificationHandler`.
@@ -49,7 +55,7 @@ More importantly, being able to use generic type arguments for notification hand
 This is the best temporary solution because it does not break the application's functionality.
 However, this also means that the IoC service dependency validation step is ignored during the build time. 
 
-Disabling this validation step has caused errors to slip into production (speaking from experience, which led to the discovery of this MediatR bug).
+Disabling this validation step has caused errors to slip into production (speaking from experience, which led to the discovery of this bug).
 Instead of ensuring services can be constructed during the build process, it resolves them at runtime when needed, meaning production failures may only trigger when some arbitrary application feature is accessed by a user.
 
 I have found this validation step to be a vital metric for ensuring a pull request is ready for production.
