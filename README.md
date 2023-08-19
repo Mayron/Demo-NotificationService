@@ -1,5 +1,5 @@
 # About
-This repository demonstrates a bug with the MediatR NuGet package when using notification handlers with generic type arguments and the IoC service provider's `ValidateOnBuild` config option set to true.
+This repository demonstrates a bug with the MediatR NuGet package (version 12.1.1, the current latest version as of writing) when using notification handlers with generic type arguments and the IoC service provider's `ValidateOnBuild` config option set to true.
 The bug may not directly be a MediatR bug, but it does mean that MediatR is incompatible with the IoC service provider's validation build step.
 
 When adding MediatR to ASP.Net Core's default IoC container, it might be possible to tweak how INotificationHandlers are registered to fix this issue.
