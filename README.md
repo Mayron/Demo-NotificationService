@@ -4,6 +4,8 @@ The bug may not directly be a MediatR bug, but it does mean that MediatR is inco
 
 When adding MediatR to ASP.Net Core's default IoC container, it might be possible to tweak how INotificationHandlers are registered to fix this issue.
 
+Link to the submitted issue on the MediatR repository: https://github.com/jbogard/MediatR/issues/948
+
 # Bug Description
 The following test demonstrates the failure caused by the bug:
 https://github.com/Mayron/Demo-NotificationService/blob/master/NotificationService.IntegrationTests/UsersApiIntegrationTests.cs#L43
